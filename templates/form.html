@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Predicción con Primera Maternidad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #444444;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #cccccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 18px;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulario para Predicción</h2>
+    <form action="/predict" method="post">
+      <label for="bwt">Peso de nacimiento en onzas:</label>
+      <input type="number" step="any" name="bwt" id="bwt" required>
+
+      <label for="age">Edad de la madre:</label>
+      <input type="number" step="any" name="age" id="age" required>
+
+      <label for="height">Estatura de la madre (cm):</label>
+      <input type="number" step="any" name="height" id="height" required>
+
+      <label for="weight">Peso de la madre (kg):</label>
+      <input type="number" step="any" name="weight" id="weight" required>
+
+      <button type="submit">Predecir</button>
+    </form>
+
+    {% if result %}
+      <div class="result">{{ result }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
